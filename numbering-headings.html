@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Numbering headings</title>
+        <style>
+            /* Switch numbering on by adding class "countheads" to h1 */
+            /* Prevent numbering for a single heading via class "nocount" */
+        
+            body {
+                counter-reset: h2counter;
+            }
+            h1 {
+                counter-reset: h2counter;
+            }
+    
+            .countheads ~ h2:before {
+                content: counter(h2counter) ".\0000a0\0000a0";
+                counter-increment: h2counter;
+            }
+            h2.nocount:before {
+                content: none;
+                counter-increment: none;
+            }
+            h2 {
+                counter-reset: h3counter;
+            }
+    
+            .countheads ~ h3:before {
+                content: counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
+                counter-increment: h3counter;
+            }
+            h3.nocount:before {
+                content: none;
+                counter-increment: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="countheads">Numbering headings</h1>
+
+        <h2>About</h2>
+        <ul>
+            <li>Companion blog post: “<a href="http://www.2ality.com/2012/01/numbering-headings.html">Automatically numbering headings via CSS</a>”</li>
+            <li>Project <a href="https://github.com/rauschma/html_demos">html_demos</a> on GitHub</li>
+        </ul>
+        
+        <h2>Demonstration</h2>
+        <h3>Subheading</h3>
+        <h3>One more subheading</h3>
+    </body>
+</html>
